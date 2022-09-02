@@ -1,6 +1,6 @@
-setEx();
+getEx();
 
-function setEx(){
+function getEx(){
     ex_ = localStorage.getItem("ex");
     ex = ex_ ? ex_.split("|") : new Array;
 
@@ -13,7 +13,7 @@ function setEx(){
     console.log(ex);
 }
 
-function setEx2(){
+function sendEx(){
     for(i in ex){
         ex[i] = JSON.stringify(ex[i]);
     }

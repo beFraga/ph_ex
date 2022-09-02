@@ -3,7 +3,9 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    text-transform: capitalize;
+    outline: none;
+    box-shadow: none;
+    resize: none;
 }
 body{
     --mainColor: #348ac4;
@@ -43,4 +45,47 @@ header{
 main{
     margin: 15px;
     padding-top: 58px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#routine{
+    min-width: calc(60% + 10px);
+    max-width: 800px; 
+}
+.day{
+    margin: 10px;
+}
+.dH{
+    display: flex;
+    align-items: center;
+}
+.dName{
+    font-size: 1.1rem;
+    margin: 10px;
+}
+.day button{
+    cursor: pointer;
+    color: #34d353;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: .3s;
+}
+/* .day button:hover{
+    transform: rotate(360deg);
+} */
+.day input{
+    height: 20px;
+    border: none;
+    border-bottom: 1px solid #111;
+    padding: 3px;
+    margin-left: 5px;
+}
+.exD{
+    margin-bottom: 5px;
+}
+.ex{
+    margin: 3px 3px 3px 6px;
 }
