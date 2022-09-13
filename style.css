@@ -7,10 +7,14 @@
     box-shadow: none;
     resize: none;
 }
+
 body{
     --mainColor: #348ac4;
-    --whiteColor: #fefefe;
+    --mainColorLight: #67bdf7;
 }
+
+/* ----------- HEADER --------------- */
+
 header{
     width: 100%;
     display: flex;
@@ -19,52 +23,64 @@ header{
     z-index: 999;
     background: var(--mainColor)
 }
+
 #logo{
     width: 40%;
     margin: 20px;
 }
-#logo a{
-    color: var(--whiteColor)
+
+#logo a, #links a{
+    color: #fefefe;
 }
+
 #links{
     width: 60%;
     margin: 20px;
     display: flex;
     justify-content: right;
 }
+
 #links ul{
     display: flex;
     flex-direction: row;
 }
+
 #links li{
     margin: 0 5px 0 5px;
 }
-#links a{
-    color: var(--whiteColor);
-}
+
+/* ------------ BODY ------------ */
+
 main{
-    margin: 15px;
+    margin: 15px 0;
     padding-top: 58px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+/* --------- ROUTINE ---------- */
+
 #routine{
     min-width: calc(60% + 10px);
-    max-width: 800px; 
+    max-width: 800px;
 }
+
 .day{
     margin: 10px;
 }
+
 .dH{
     display: flex;
     align-items: center;
 }
+
 .dName{
     font-size: 1.1rem;
     margin: 10px;
 }
+
 .day button{
     cursor: pointer;
     color: #34d353;
@@ -73,9 +89,7 @@ main{
     padding: 5px;
     transition: .3s;
 }
-/* .day button:hover{
-    transform: rotate(360deg);
-} */
+
 .day input{
     height: 20px;
     border: none;
@@ -83,9 +97,89 @@ main{
     padding: 3px;
     margin-left: 5px;
 }
+
 .exD{
     margin-bottom: 5px;
 }
+
 .ex{
     margin: 3px 3px 3px 6px;
+}
+
+/* ---------- ADD NEW EX --------- */
+
+#main2{
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    background: #fff7;
+}
+
+#dae{
+    width: 60%;
+    max-width: 600px;
+    height: 300px;
+    z-index: 11;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;
+    flex-direction: column;
+}
+
+#daeh{
+    width: 100%;
+    height: 75px;
+    background: var(--mainColor);
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+#daeh button{
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.4;
+    transition: 0.3s;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#daeh button:hover{
+    opacity: 1;
+}
+
+#daeh button:after, #daeh button:before{
+    content: ' ';
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    height: 11px;
+    width: 2px;
+    background: #c22;
+}
+
+#daeh button:after{
+    transform: rotate(45deg);
+}
+
+#daeh button:before{
+    transform: rotate(-45deg);
+}
+
+#daeh p{
+    color: #fefefe;
+}
+
+#daeb{
+    width: 100%;
+    height: 225px;
+    background: var(--mainColorLight);
+    border-radius: 0 0 5px 5px;
 }

@@ -1,6 +1,7 @@
 setRoutine();
 
 function setRoutine(){
+    //getRoutine();
     for(i in ex){
         p = document.createElement("p");
         p.classList.add("ex");
@@ -12,25 +13,52 @@ function setRoutine(){
     }
 }
 
+// make this function
+// function getRoutine(){
+//     xml = new XMLHttpRequest();
+//     url = "routine.html";
+// }
 
-
-function addEx(me){
+function preCreateEx(me){
     parent = me.parentNode;
-    input = document.createElement("input");
-    input.setAttribute("onkeyup", "btSim(this)"); //make this func
-    parent.append(input);
-    me.setAttribute("onclick", "addEx2(this)");
-    me.innerText = "-";
-    me.style.color = "#d33453";
+    let day = me.parentNode.parentNode.querySelector(".dName").innerText;
+    createEx(day);
 }
 
-function addEx2(me){
-    let parent = me.parentNode;
-    let pparent = parent.parentNode;
-    console.log(pparent);
+function createEx(day){
+    div = document.createElement("div");
+    div.id = "dae";
 
-    let day = pparent.querySelector(".dName").innerText;
-    let input = parent.querySelector("input");
+    main2 = document.createElement("div");
+    main2.id = "main2";
+
+    divH = document.createElement("div");
+    divH.id = "daeh";
+    title = document.createElement("p");
+    title.innerText = day;
+    exit = document.createElement("button");
+    exit.setAttribute("onclick", "closeEx()");
+    divH.append(exit);
+    divH.append(title);
+
+    divB = document.createElement("div");
+    divB.id = "daeb";
+
+    div.append(divH);
+    div.append(divB);
+    document.body.append(div);
+    document.body.append(main2);
+}
+
+function closeEx(){
+    div = document.getElementById("dae");
+    main2 = document.getElementById("main2");
+    document.body.removeChild(div);
+    document.body.removeChild(main2);
+}
+
+function addEx(me, day){
+    let input = me.parentNode.querySelector("input");
     if(input.value !== ""){
         let newVal = {"name": input.value, "day": day};
         ex.push(newVal);
@@ -38,10 +66,8 @@ function addEx2(me){
         sendEx();
         localStorage.setItem("ex", ex);
         getEx();
-        setRoutine(); //error
+        setRoutine();
     }
     me.setAttribute("onclick", "addEx(this)");
-    me.innerText = "+";
-    me.style.color = "#34d353";
     input.parentNode.removeChild(input);
 }
