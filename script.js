@@ -1,23 +1,25 @@
 setRoutine();
 
 function setRoutine(){
-    //getRoutine();
+    clearRoutine();
     for(i in ex){
         p = document.createElement("p");
         p.classList.add("ex");
         p.innerText = ex[i].name;
-
-        dDiv = document.getElementById(ex[i].day.toLowerCase());
-        exDiv = dDiv.querySelector(".exD");
-        exDiv.append(p);
+        for(ii in ex[i].day){
+            dDiv = document.getElementById(ex[i].day[ii].toLowerCase());
+            exDiv = dDiv.querySelector(".exD");
+            exDiv.append(p);
+        }
     }
 }
 
-// make this function
-// function getRoutine(){
-//     xml = new XMLHttpRequest();
-//     url = "routine.html";
-// }
+function clearRoutine(){
+    exDiv = document.querySelectorAll(".exD");
+    for(i in exDiv){
+        exDiv[i].innerHTML = "";
+    }
+}
 
 function preCreateEx(me){
     parent = me.parentNode;
@@ -43,6 +45,12 @@ function createEx(day){
 
     divB = document.createElement("div");
     divB.id = "daeb";
+    input = document.createElement("input");
+    send = document.createElement("button");
+    send.setAttribute("onclick", `addEx(this, "${day}")`);
+    send.innerText = "Send";
+    divB.append(input);
+    divB.append(send);
 
     div.append(divH);
     div.append(divB);
@@ -59,8 +67,9 @@ function closeEx(){
 
 function addEx(me, day){
     let input = me.parentNode.querySelector("input");
+    console.log(input);
     if(input.value !== ""){
-        let newVal = {"name": input.value, "day": day};
+        let newVal = {"name": input.value, "day": [day]};
         ex.push(newVal);
 
         sendEx();

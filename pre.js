@@ -7,14 +7,17 @@ function getEx(){
     if(ex.length > 0){
         for(i in ex){
             ex[i] = JSON.parse(ex[i]);
+            if(typeof(ex[i].day) == "string"){
+                ex[i].day = ex[i].day.split(",");
+            }
         }
     }
-
     console.log(ex);
 }
 
 function sendEx(){
     for(i in ex){
+        ex[i].day = ex[i].day.join(",");
         ex[i] = JSON.stringify(ex[i]);
     }
 
